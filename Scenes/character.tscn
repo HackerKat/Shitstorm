@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://doh0w0if3r85g"]
+[gd_scene load_steps=5 format=3 uid="uid://doh0w0if3r85g"]
 
 [ext_resource type="Script" path="res://Scripts/character_new.gd" id="1_7egtf"]
+[ext_resource type="PackedScene" uid="uid://cllb7qehm7ufm" path="res://Scenes/camera_ui.tscn" id="2_ls814"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8wiiv"]
 
@@ -24,3 +25,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="SelfieCam" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, -1.65802)
+
+[node name="CameraUI" parent="SelfieCam" instance=ExtResource("2_ls814")]
