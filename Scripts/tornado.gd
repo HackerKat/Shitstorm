@@ -12,8 +12,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# Update the rotation based on the angular speed.
-	rotate_y(angular_speed * delta)
-
+	#rotate_y(angular_speed * delta)
+	
 	# Generate random numbers for the X, Y, and Z components of velocity.
 	var random_direction = Vector3(randf_range(-1.0,1.0), 0, randf_range(-1.0,1.0))
 	random_direction = random_direction.normalized() + previous_direction
@@ -22,4 +22,6 @@ func _process(delta):
 	velocity = random_direction * speed
 	previous_direction = random_direction
 	# Move the object based on the updated velocity.
-	global_transform.origin += velocity * delta
+	# global_transform.origin += velocity * delta
+	apply_force(random_direction)
+	# * delta)

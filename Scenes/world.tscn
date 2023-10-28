@@ -20,8 +20,8 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oa41i"]
 albedo_color = Color(0.380392, 0.380392, 0.380392, 1)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_t14a2"]
-height = 21.907
+[sub_resource type="SphereShape3D" id="SphereShape3D_ej2jp"]
+radius = 2.51
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rwhea"]
 render_priority = 0
@@ -129,16 +129,17 @@ transform = Transform3D(-0.259511, 0.95431, 0.148144, 0.0268235, 0.160462, -0.98
 collision_layer = 4
 collision_mask = 7
 mass = 0.1
+linear_velocity = Vector3(0.21, 2.08165e-12, 2.08165e-12)
 script = ExtResource("3_gu0ge")
 
 [node name="TornadoOBJ" type="MeshInstance3D" parent="Tornado"]
-transform = Transform3D(-0.01, 0, 0, 0, -0.01, 0, 0, 0, -0.01, 2.08165e-12, 2.08165e-12, -1.35)
+transform = Transform3D(-0.01, 0, 0, 0, -0.01, 0, 0, 0, -0.01, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_oa41i")
 mesh = ExtResource("3_e3pi7")
 skeleton = NodePath("../..")
 
 [node name="TornadoCollisionShape" type="CollisionShape3D" parent="Tornado"]
-shape = SubResource("CylinderShape3D_t14a2")
+shape = SubResource("SphereShape3D_ej2jp")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 use_collision = true
