@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ga4brol6kes6"]
+[gd_scene load_steps=20 format=3 uid="uid://ga4brol6kes6"]
 
 [ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://Scenes/character.tscn" id="2_7bd7c"]
 [ext_resource type="Script" path="res://Scripts/distanceChecker.gd" id="2_vneaq"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" path="res://demo/textures/ground037_nrm_rgh.dds" id="7_qkexv"]
 [ext_resource type="Texture2D" path="res://demo/textures/rock028_alb_ht.dds" id="8_e65hr"]
 [ext_resource type="Texture2D" path="res://demo/textures/rock028_nrm_rgh.dds" id="9_k7xsn"]
+[ext_resource type="PackedScene" uid="uid://cipcjc3emg35k" path="res://models/cow/vaca.FBX" id="10_q32rh"]
 
 [sub_resource type="Environment" id="Environment_g3bud"]
 background_mode = 1
@@ -99,6 +100,12 @@ transform = Transform3D(-0.00999999, 0, 0, 0, 0.05, 0, 0, 0, -0.01, 562.284, -8.
 material_override = SubResource("StandardMaterial3D_oa41i")
 mesh = ExtResource("3_e3pi7")
 skeleton = NodePath("../..")
+
+[node name="vaca" parent="Node3D/TornadoOBJ" instance=ExtResource("10_q32rh")]
+transform = Transform3D(28.0919, -6.23694, -8.48222, 1.10469, 5.86136, -0.651248, 8.96318, 1.48742, 28.5911, -134.117, 67.6809, 0)
+
+[node name="vaca2" parent="Node3D/TornadoOBJ" instance=ExtResource("10_q32rh")]
+transform = Transform3D(27.3975, -3.87573, 11.5912, 1.10469, 5.86136, -0.651248, -10.9027, 5.10789, 27.478, 167.836, -9.47043, -13.7539)
 
 [editable path="character"]
 [editable path="character/Node3D"]
