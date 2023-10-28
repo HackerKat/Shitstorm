@@ -1,10 +1,10 @@
 extends Node
 
 @onready var player = $"../character"
-@onready var tornado = $"../Tornado"
+@onready var tornado = $"../Node3D/Tornado"
 
-var distanceToStartSuck = 20
-var suckSpeed = 20
+var distanceToStartSuck = 30
+var suckSpeed = 40
 var originalSpeed 
 
 

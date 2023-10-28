@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://ga4brol6kes6"]
+[gd_scene load_steps=19 format=3 uid="uid://ga4brol6kes6"]
 
 [ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://Scenes/character.tscn" id="2_7bd7c"]
+[ext_resource type="Script" path="res://Scripts/distanceChecker.gd" id="2_vneaq"]
 [ext_resource type="ArrayMesh" uid="uid://coheahqppqoby" path="res://models/Tornado/abstract_object.obj" id="3_e3pi7"]
 [ext_resource type="Script" path="res://Scripts/tornado.gd" id="3_gu0ge"]
 [ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://demo/data/terrain_storage.res" id="5_3t3dv"]
@@ -20,12 +21,6 @@ background_color = Color(0.411765, 0.756863, 0.909804, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dmhl4"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oa41i"]
-albedo_color = Color(0.380392, 0.380392, 0.380392, 1)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_8i2tp"]
-radius = 2.352
-
 [sub_resource type="Terrain3DTexture" id="Terrain3DTexture_56fwf"]
 albedo_texture = ExtResource("6_l0fs4")
 normal_texture = ExtResource("7_qkexv")
@@ -38,13 +33,20 @@ normal_texture = ExtResource("9_k7xsn")
 [sub_resource type="Terrain3DTextureList" id="Terrain3DTextureList_6biym"]
 textures = Array[Terrain3DTexture]([SubResource("Terrain3DTexture_56fwf"), SubResource("Terrain3DTexture_x74kb")])
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_8i2tp"]
+radius = 2.352
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oa41i"]
+albedo_color = Color(0.380392, 0.380392, 0.380392, 1)
+
 [node name="World" type="Node3D"]
 
 [node name="character" parent="." instance=ExtResource("2_7bd7c")]
-transform = Transform3D(-1, 2.98023e-08, -8.74228e-08, 2.98023e-08, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0)
+transform = Transform3D(-1, 2.98023e-08, -8.74228e-08, 2.98023e-08, 1, 0, 8.74228e-08, 0, -1, 580.564, 1, 146.699)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g3bud")
+script = ExtResource("2_vneaq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866026, 0.5, 0.5, -0.433013, 0.75, 0, 6, 0)
@@ -69,24 +71,6 @@ material = SubResource("StandardMaterial3D_13kt2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_dmhl4")
 
-[node name="Tornado" type="RigidBody3D" parent="."]
-transform = Transform3D(-0.259511, 0.95431, 0.148144, 0.0268235, 0.160462, -0.986678, -0.965367, -0.25208, -0.0672397, 1.61642, 2.24872, 3.01365)
-collision_layer = 4
-collision_mask = 7
-mass = 0.1
-can_sleep = false
-linear_damp_mode = 1
-script = ExtResource("3_gu0ge")
-
-[node name="TornadoOBJ" type="MeshInstance3D" parent="Tornado"]
-transform = Transform3D(-0.01, 0, 0, 0, -0.01, 0, 0, 0, -0.01, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_oa41i")
-mesh = ExtResource("3_e3pi7")
-skeleton = NodePath("../..")
-
-[node name="TornadoCollisionShape" type="CollisionShape3D" parent="Tornado"]
-shape = SubResource("SphereShape3D_8i2tp")
-
 [node name="Terrain3D" type="Terrain3D" parent="."]
 storage = ExtResource("5_3t3dv")
 texture_list = SubResource("Terrain3DTextureList_6biym")
@@ -94,3 +78,27 @@ collision_layer = 7
 collision_mask = 3
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Tornado" type="RigidBody3D" parent="Node3D"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 562.284, -11.5067, 140.182)
+collision_layer = 4
+collision_mask = 7
+mass = 0.1
+can_sleep = false
+linear_damp_mode = 1
+script = ExtResource("3_gu0ge")
+
+[node name="TornadoCollisionShape" type="CollisionShape3D" parent="Node3D/Tornado"]
+shape = SubResource("SphereShape3D_8i2tp")
+
+[node name="TornadoOBJ" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.00999999, 0, 0, 0, 0.05, 0, 0, 0, -0.01, 562.284, -8.19462, 140.182)
+material_override = SubResource("StandardMaterial3D_oa41i")
+mesh = ExtResource("3_e3pi7")
+skeleton = NodePath("../..")
+
+[editable path="character"]
+[editable path="character/Node3D"]
+[editable path="character/Node3D/characterMedium"]

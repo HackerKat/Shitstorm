@@ -43,12 +43,6 @@ func _process(delta):
 	if battery_time.time_left == 0:
 		pass
 
-func _unhandled_input(event):
-	if event is InputEventMouseMotion and Input.mouse_mode==Input.MOUSE_MODE_CAPTURED:
-		rotate_y(-event.relative.x * .005)
-		current_cam.rotate_x(-event.relative.y * .005)
-		current_cam.rotation.x = clamp(current_cam.rotation.x, -PI/2, PI/2)
-
 func _unhandled_key_input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.mouse_mode==Input.MOUSE_MODE_CAPTURED: 
@@ -61,6 +55,10 @@ func _input(event):
 		switch_camera()
 	elif event.is_action_pressed("take_photo"):
 		take_photo()
+	if event is InputEventMouseMotion and Input.mouse_mode==Input.MOUSE_MODE_CAPTURED:
+		rotate_y(-event.relative.x * .005)
+		current_cam.rotate_x(-event.relative.y * .005)
+		current_cam.rotation.x = clamp(current_cam.rotation.x, -PI/2, PI/2)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -94,7 +92,6 @@ func _physics_process(delta):
 	var t = delta * 6
 	if Input.mouse_mode==Input.MOUSE_MODE_CAPTURED: 
 		rotation_degrees=rotation_degrees.lerp(Vector3(input_dir.normalized().y*angle,rotation_degrees.y,-input_dir.normalized().x*angle),t)
-		print(rotation_degrees)
 		
 	move_and_slide()
 	force_update_transform()
@@ -118,7 +115,7 @@ func take_photo():
 		var tex: Texture = viewport.get_texture()
 		var img: Image = tex.get_image()
 		img.flip_y()
-		var tornado_position = get_tree().current_scene.get_node("Tornado").global_position
+		var tornado_position = $"../Node3D/Tornado".global_position
 		var photo: Photo = Photo.new(position, battery_time.time_left, img, tornado_position)
 		photos.append(photo)
 		photo_score = photo.score(photos)

@@ -4,6 +4,8 @@ var velocity = Vector3(1, 0, 1)  # Initial velocity.
 var speed = 10.0  # Adjust the speed as needed.
 var angular_speed = 1.0  # Adjust the angular speed as needed.
 
+@onready var visual = $"../TornadoOBJ"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -26,3 +28,5 @@ func _process(delta):
 	# global_transform.origin += velocity * delta
 	apply_force(random_direction)
 	# * delta)
+	visual.position = position
+	visual.rotation_degrees.y += 5
