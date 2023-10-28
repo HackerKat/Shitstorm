@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://ga4brol6kes6"]
 
 [ext_resource type="Shader" uid="uid://dtq8vkrpvuqfj" path="res://gridmaterial.tres" id="1_78mpy"]
-[ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://character.tscn" id="2_7bd7c"]
-[ext_resource type="Script" path="res://animation.gd" id="3_w4bpu"]
+[ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://Scenes/character.tscn" id="2_7bd7c"]
+[ext_resource type="Script" path="res://Scripts/animation.gd" id="3_w4bpu"]
 
 [sub_resource type="Environment" id="Environment_g3bud"]
 background_mode = 1
