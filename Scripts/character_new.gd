@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
+var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const FRICTION = 25
 const HORIZONTAL_ACCELERATION = 30
@@ -17,12 +17,16 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var is_selfie_active = false
 var battery_time = Timer.new()
+var photo_score = 0
 
 var amount_photos = 5
 var min_to_end = 5
 var battery_status = 1
 var seconds_for_timer = min_to_end * 60
 var photos: Array = []
+
+var ShutterSound = preload("res://Audio/camera-shutter-2.wav")
+#@onready var AudioPlayer = get_node("AudioStreamPlayer3D/AudioStreamPlayer3D")
 
 func _ready():
 	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
@@ -36,6 +40,8 @@ func _ready():
 func _process(delta):
 	battery_status = battery_time.time_left / seconds_for_timer
 	camera_ui.battery_status = battery_status
+	if battery_time.time_left == 0:
+		pass
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode==Input.MOUSE_MODE_CAPTURED:
@@ -88,7 +94,8 @@ func _physics_process(delta):
 	var t = delta * 6
 	if Input.mouse_mode==Input.MOUSE_MODE_CAPTURED: 
 		rotation_degrees=rotation_degrees.lerp(Vector3(input_dir.normalized().y*angle,rotation_degrees.y,-input_dir.normalized().x*angle),t)
-	
+		print(rotation_degrees)
+		
 	move_and_slide()
 	force_update_transform()
 
@@ -114,8 +121,17 @@ func take_photo():
 		var tornado_position = get_tree().current_scene.get_node("Tornado").global_position
 		var photo: Photo = Photo.new(position, battery_time.time_left, img, tornado_position)
 		photos.append(photo)
+		photo_score = photo.score(photos)
 		
+		if !$"../AudioStreamPlayer3D".is_playing():
+			$"../AudioStreamPlayer3D".stream = ShutterSound
+			$"../AudioStreamPlayer3D".play()
+
 		camera_ui.storage_capacity = photos.size()
+		camera_ui.score = photo_score
 		print("photo has been taken")
 	else:
 		print("no photo left")
+
+func setSpeed(newSpeed):
+	SPEED = newSpeed

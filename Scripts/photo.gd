@@ -40,7 +40,7 @@ func score(photos):
 	return min(1000, res)
 
 func base_score():
-	var distance = (self.position - self.tornado_position).lenght()
+	var distance = (self.position - self.tornado_position).length()
 	
 	var res = 0
 	if distance > 1:

@@ -1,6 +1,7 @@
 extends Control
 var battery_status = 5
 var storage_capacity
+var score = 0
 
 @onready var battery = $Battery
 @onready var storageLabel = $Storage/Label

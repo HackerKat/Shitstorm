@@ -1,17 +1,27 @@
 extends Node
 
-@onready var player = %Player
+@onready var player = $"../character"
 @onready var tornado = $"../Tornado"
+
+var distanceToStartSuck = 20
+var suckSpeed = 20
+var originalSpeed 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	originalSpeed = player.get("SPEED")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(returnDistance())
+	var distance = returnDistance()
+	if distance < distanceToStartSuck:
+		player.position = player.position.move_toward(tornado.position, delta * 1 / distance * suckSpeed)
+		player.setSpeed((distance / originalSpeed) * originalSpeed)
+	else:
+		player.setSpeed(originalSpeed)
+		
 
 func returnDistance() -> float:
 	if !player: return -1
