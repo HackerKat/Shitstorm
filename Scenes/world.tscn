@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://dtq8vkrpvuqfj" path="res://gridmaterial.tres" id="1_78mpy"]
 [ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://Scenes/character.tscn" id="2_7bd7c"]
-[ext_resource type="ArrayMesh" uid="uid://cf7l8gnlcww2j" path="res://models/Tornado/abstract_object.obj" id="3_e3pi7"]
+[ext_resource type="ArrayMesh" uid="uid://coheahqppqoby" path="res://models/Tornado/abstract_object.obj" id="3_e3pi7"]
 [ext_resource type="Script" path="res://Scripts/tornado.gd" id="3_gu0ge"]
 [ext_resource type="Script" path="res://Scripts/animation.gd" id="3_w4bpu"]
 
@@ -128,6 +128,7 @@ shape = SubResource("BoxShape3D_dmhl4")
 transform = Transform3D(-0.259511, 0.95431, 0.148144, 0.0268235, 0.160462, -0.986678, -0.965367, -0.25208, -0.0672397, 1.61642, 2.24872, 3.01365)
 collision_layer = 4
 collision_mask = 7
+axis_lock_linear_y = true
 mass = 0.1
 linear_velocity = Vector3(0.21, 2.08165e-12, 2.08165e-12)
 script = ExtResource("3_gu0ge")
