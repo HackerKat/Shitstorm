@@ -16,6 +16,7 @@ var tornado_position
 
 
 func efficiency_graph(value, mult):
+	# returns a value between 0 and 1 on a graph that looks like a sin-wave
 	if value < 0:
 		return 0
 	if value > mult:
@@ -23,14 +24,15 @@ func efficiency_graph(value, mult):
 	return 1 - (1 - (value / mult) ** 2) ** 2
 
 # Constructor to initialize the Photo object with provided angle, position, and picture
-func _init(position, tornado_position,timestamp, picture):
+func _init(position,timestamp, picture):
 	self.position = position
 	self.picture = picture
 	self.timestamp = timestamp
-	self.tornado_position = tornado_position
+	self.tornado_position = get_node("Tornado").global_position
 
 
 func score(photos):
+	# gets the photos and calculates 
 	var res = base_score()
 	for photo in photos:
 		res += comparison_score(photo)
@@ -60,6 +62,8 @@ func comparison_score(other):
 	var time_efficiency = efficiency_graph(time_difference, PENALTY_TIME_DIFFERENCE)
 	
 	#print("Ep: ",position_efficiency,  " Et: ", time_efficiency)
+	
+	
 	
 	var res = position_efficiency * 0.8 + time_efficiency * 0.2 #* angle_efficiency
 	res *= 50
