@@ -15,6 +15,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var animIdle = get_node("Node3D/AnimationPlayerIdle")
 @onready var animRun = get_node("Node3D/AnimationPlayerRun")
 
+var mainmenu
+var instance
+
 var is_selfie_active = false
 var battery_time = Timer.new()
 
@@ -43,18 +46,28 @@ func _unhandled_input(event):
 		current_cam.rotate_x(-event.relative.y * .005)
 		current_cam.rotation.x = clamp(current_cam.rotation.x, -PI/2, PI/2)
 
-func _unhandled_key_input(event):
+	
+func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.mouse_mode==Input.MOUSE_MODE_CAPTURED: 
 			Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
-
-func _input(event):
+		if !mainmenu:
+			mainmenu = load("res://Scenes/main_menu.tscn")
+			instance = mainmenu.instantiate()
+			add_child(instance)
+		instance.show()
+		instance.playButton.hide()
+		instance.continueButton.show()
+		instance.gameStarted = true
+		get_tree().paused = true
+		
 	if event.is_action_pressed("switch_camera"):
 		switch_camera()
 	elif event.is_action_pressed("take_photo"):
 		take_photo()
+	
 
 func _physics_process(delta):
 	# Add the gravity.

@@ -12,6 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	battery.value =  battery_status * 100
 	storageLabel.text = str(storage_capacity)
 	if storage_capacity:

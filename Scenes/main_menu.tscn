@@ -19,6 +19,15 @@ offset_right = 818.0
 offset_bottom = 252.0
 text = "PLAY"
 
+[node name="ContinueButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 336.0
+offset_top = 152.0
+offset_right = 818.0
+offset_bottom = 252.0
+text = "CONTINUE"
+
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 336.0
@@ -36,5 +45,6 @@ offset_bottom = 372.0
 text = "CREDITS"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
