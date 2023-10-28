@@ -5,6 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://coheahqppqoby" path="res://models/Tornado/abstract_object.obj" id="3_e3pi7"]
 [ext_resource type="Script" path="res://Scripts/tornado.gd" id="3_gu0ge"]
 [ext_resource type="Script" path="res://Scripts/animation.gd" id="3_w4bpu"]
+[ext_resource type="PackedScene" uid="uid://b1eg7ldni7wrc" path="res://demo/Demo.tscn" id="6_55wxc"]
 
 [sub_resource type="Environment" id="Environment_g3bud"]
 background_mode = 1
@@ -22,13 +23,6 @@ albedo_color = Color(0.380392, 0.380392, 0.380392, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t14a2"]
 height = 21.907
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rwhea"]
-render_priority = 0
-shader = ExtResource("1_78mpy")
-shader_parameter/grid_size = 1
-shader_parameter/Color_1 = Color(0, 0.803922, 0.388235, 1)
-shader_parameter/Color_2 = Color(0, 0.898039, 0.439216, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qmir8"]
 size = Vector3(3, 2, 0.5)
@@ -140,12 +134,6 @@ skeleton = NodePath("../..")
 [node name="TornadoCollisionShape" type="CollisionShape3D" parent="Tornado"]
 shape = SubResource("CylinderShape3D_t14a2")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-use_collision = true
-collision_mask = 7
-size = Vector3(500, 2, 500)
-material = SubResource("ShaderMaterial_rwhea")
-
 [node name="AnimationBody3D3" type="AnimatableBody3D" parent="."]
 transform = Transform3D(-7.23586e-16, 1, -4.37114e-08, 5.21541e-08, -4.37114e-08, -1, -1, -1.33227e-15, -5.21541e-08, 3.25, 3.75, 9.05)
 collision_layer = 6
@@ -171,33 +159,6 @@ libraries = {
 "": SubResource("AnimationLibrary_vyo8q")
 }
 script = ExtResource("3_w4bpu")
-
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -7, 2, -7)
-billboard = 2
-alpha_cut = 1
-text = "Credits:
-https://www.youtube.com/watch?v=KugpjfQoDbI
-https://www.youtube.com/watch?v=n8D3vEx7NAE
-https://godotshaders.com/shader/world-coordinates-grid-bw-shader/"
-
-[node name="Label3D2" type="Label3D" parent="."]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 2, -7)
-billboard = 2
-alpha_cut = 1
-text = "Project description:
-It is a demo, so you can start your own projects with it."
-
-[node name="Label3D3" type="Label3D" parent="."]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 6.5, 2, -7)
-billboard = 2
-alpha_cut = 1
-text = "Notes:
-Currently every static and rigid body is a set of 4  objects
-(StaticBody, CollisionShape, CSGBox (shadow), CSGBox)
-And you have to manually change size of each other.
-
-It can be done by script so in the next version of it i will iomplement the script."
 
 [node name="StaticProps" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 5.5)
@@ -351,3 +312,5 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 7.74062,
 alpha_cut = 2
 text = "Finish"
 font_size = 64
+
+[node name="Demo" parent="." instance=ExtResource("6_55wxc")]
