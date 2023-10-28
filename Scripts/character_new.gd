@@ -104,8 +104,11 @@ func take_photo():
 		var tex: Texture = viewport.get_texture()
 		var img: Image = tex.get_image()
 		img.flip_y()
-		var photo: Photo = Photo.new(position, battery_time.time_left, img)
+		var tornado_position = get_tree().current_scene.get_node("Tornado").global_position
+		var photo: Photo = Photo.new(position, battery_time.time_left, img, tornado_position)
 		photos.append(photo)
+		
+		camera_ui.storage_capacity = photos.size()
 		print("photo has been taken")
 	else:
 		print("no photo left")

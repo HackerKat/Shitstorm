@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cllb7qehm7ufm"]
+[gd_scene load_steps=9 format=3 uid="uid://cllb7qehm7ufm"]
 
 [ext_resource type="Script" path="res://Scenes/camera_controller.gd" id="1_n3hv3"]
 [ext_resource type="Texture2D" uid="uid://7ej8x8isxgqp" path="res://UI/empty-battery.png" id="1_xkcmn"]
 [ext_resource type="Texture2D" uid="uid://dhh7bisb0t541" path="res://UI/hard-drive.png" id="2_5kpen"]
 [ext_resource type="Texture2D" uid="uid://d3q6qxeao5evv" path="res://UI/Border.png" id="3_qpd7j"]
+[ext_resource type="Texture2D" uid="uid://dmfe0qnrh0ybf" path="res://UI/remove.png" id="4_r6soi"]
 
 [sub_resource type="Gradient" id="Gradient_m5rfq"]
 offsets = PackedFloat32Array(0, 0.475524, 1)
@@ -25,6 +26,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_n3hv3")
 
 [node name="Battery" type="TextureProgressBar" parent="."]
@@ -54,13 +57,24 @@ offset_left = 3.0
 offset_top = -65.0
 offset_right = 107.0
 offset_bottom = 48.0
-text = "10"
+text = "5"
 label_settings = SubResource("LabelSettings_vytpl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MaxReachedTexture" type="TextureRect" parent="Storage"]
+visible = false
+layout_mode = 0
+offset_left = 72.0
+offset_right = 112.0
+offset_bottom = 40.0
+texture = ExtResource("4_r6soi")
+expand_mode = 1
+
 [node name="Border" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = 160.0
+offset_top = 40.0
+offset_right = 1312.0
+offset_bottom = 688.0
 texture = ExtResource("3_qpd7j")
