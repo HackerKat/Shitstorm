@@ -73,9 +73,9 @@ shape = SubResource("BoxShape3D_dmhl4")
 transform = Transform3D(-0.259511, 0.95431, 0.148144, 0.0268235, 0.160462, -0.986678, -0.965367, -0.25208, -0.0672397, 1.61642, 2.24872, 3.01365)
 collision_layer = 4
 collision_mask = 7
-axis_lock_linear_z = true
 mass = 0.1
 can_sleep = false
+linear_damp_mode = 1
 script = ExtResource("3_gu0ge")
 
 [node name="TornadoOBJ" type="MeshInstance3D" parent="Tornado"]
