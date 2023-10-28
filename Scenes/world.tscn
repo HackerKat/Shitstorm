@@ -1,9 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://ga4brol6kes6"]
+[gd_scene load_steps=18 format=3 uid="uid://ga4brol6kes6"]
 
 [ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://Scenes/character.tscn" id="2_7bd7c"]
 [ext_resource type="ArrayMesh" uid="uid://coheahqppqoby" path="res://models/Tornado/abstract_object.obj" id="3_e3pi7"]
 [ext_resource type="Script" path="res://Scripts/tornado.gd" id="3_gu0ge"]
-[ext_resource type="Script" path="res://Scripts/animation.gd" id="3_w4bpu"]
 [ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://demo/data/terrain_storage.res" id="5_3t3dv"]
 [ext_resource type="Texture2D" path="res://demo/textures/ground037_alb_ht.dds" id="6_l0fs4"]
 [ext_resource type="Texture2D" path="res://demo/textures/ground037_nrm_rgh.dds" id="7_qkexv"]
@@ -26,44 +25,6 @@ albedo_color = Color(0.380392, 0.380392, 0.380392, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8i2tp"]
 radius = 2.352
-
-[sub_resource type="Animation" id="Animation_sy0kk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(3.25, 3.75, 9.05)]
-}
-
-[sub_resource type="Animation" id="Animation_leev5"]
-resource_name = "slide"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.25, 3.75, 9.05), Vector3(2.25, 3.75, 9.05), Vector3(-1.25, 3.75, 9.05)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vyo8q"]
-_data = {
-"RESET": SubResource("Animation_sy0kk"),
-"slide": SubResource("Animation_leev5")
-}
 
 [sub_resource type="Terrain3DTexture" id="Terrain3DTexture_56fwf"]
 albedo_texture = ExtResource("6_l0fs4")
@@ -112,9 +73,9 @@ shape = SubResource("BoxShape3D_dmhl4")
 transform = Transform3D(-0.259511, 0.95431, 0.148144, 0.0268235, 0.160462, -0.986678, -0.965367, -0.25208, -0.0672397, 1.61642, 2.24872, 3.01365)
 collision_layer = 4
 collision_mask = 7
-axis_lock_linear_z = true
 mass = 0.1
 can_sleep = false
+linear_damp_mode = 1
 script = ExtResource("3_gu0ge")
 
 [node name="TornadoOBJ" type="MeshInstance3D" parent="Tornado"]
@@ -126,16 +87,10 @@ skeleton = NodePath("../..")
 [node name="TornadoCollisionShape" type="CollisionShape3D" parent="Tornado"]
 shape = SubResource("SphereShape3D_8i2tp")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("")
-playback_process_mode = 0
-libraries = {
-"": SubResource("AnimationLibrary_vyo8q")
-}
-script = ExtResource("3_w4bpu")
-
 [node name="Terrain3D" type="Terrain3D" parent="."]
 storage = ExtResource("5_3t3dv")
 texture_list = SubResource("Terrain3DTextureList_6biym")
 collision_layer = 7
 collision_mask = 3
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
