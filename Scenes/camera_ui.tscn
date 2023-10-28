@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cllb7qehm7ufm"]
+[gd_scene load_steps=10 format=3 uid="uid://cllb7qehm7ufm"]
 
 [ext_resource type="Script" path="res://Scenes/camera_controller.gd" id="1_n3hv3"]
 [ext_resource type="Texture2D" uid="uid://7ej8x8isxgqp" path="res://UI/empty-battery.png" id="1_xkcmn"]
@@ -18,6 +18,9 @@ height = 200
 [sub_resource type="LabelSettings" id="LabelSettings_vytpl"]
 font_size = 70
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2rmn8"]
+font_size = 41
 
 [node name="CameraUI" type="Control"]
 layout_mode = 3
@@ -76,3 +79,12 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("3_qpd7j")
+
+[node name="ScoreUi" type="Label" parent="."]
+layout_mode = 0
+offset_left = 902.0
+offset_top = 23.0
+offset_right = 1103.0
+offset_bottom = 130.0
+text = "Score: "
+label_settings = SubResource("LabelSettings_2rmn8")
