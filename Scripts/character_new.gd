@@ -8,18 +8,39 @@ const MAX_SPEED=5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready var camera = $Camera3D
+@onready var normal_cam = $Camera3D
+@onready var selfie_cam = $SelfieCam
+@onready var current_cam = $Camera3D
+@onready var camera_ui = $SelfieCam/CameraUI
 
+var is_selfie_active = false
+var battery_time = Timer.new()
 
+var amount_photos = 5
+var min_to_end = 5
+var battery_status = 1
+var seconds_for_timer = min_to_end * 60
+var photos: Array = []
 
 func _ready():
 	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
+	# Start timer for battery
+	#battery_time.connect("timeout",self,"do_this")
+	battery_time.wait_time = seconds_for_timer
+	battery_time.one_shot = true
+	add_child(battery_time)
+	battery_time.start()
+
+func _process(delta):
+	camera_ui.visible = is_selfie_active
+	battery_status = battery_time.time_left / seconds_for_timer
+	camera_ui.battery_status = battery_status
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode==Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * .005)
-		camera.rotate_x(-event.relative.y * .005)
-		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
+		current_cam.rotate_x(-event.relative.y * .005)
+		current_cam.rotation.x = clamp(current_cam.rotation.x, -PI/2, PI/2)
 
 func _unhandled_key_input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -27,6 +48,12 @@ func _unhandled_key_input(event):
 			Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
+
+func _input(event):
+	if event.is_action_pressed("switch_camera"):
+		switch_camera()
+	elif event.is_action_pressed("take_photo"):
+		take_photo()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -57,3 +84,32 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	force_update_transform()
+
+func switch_camera():
+	if is_selfie_active:
+		# change current_cam to normal_cam
+		current_cam = normal_cam
+		# turn off selfie_cam for viewport 
+		# so normal_cam is used
+		selfie_cam.current = false
+		is_selfie_active = false
+	else:
+		current_cam = selfie_cam
+		selfie_cam.current = true
+		is_selfie_active = true
+
+func take_photo():
+	if photos.size() + 1 < amount_photos:
+		var viewport: Viewport = get_viewport()
+		var tex: Texture = viewport.get_texture()
+		var img: Image = tex.get_image()
+		img.flip_y()
+		photos.append(
+				{
+					"pos": position,
+					"image": img
+				}
+			)
+		print(position)
+	else:
+		print("no photo left")
