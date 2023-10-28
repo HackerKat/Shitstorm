@@ -17,6 +17,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var is_selfie_active = false
 var battery_time = Timer.new()
+var photo_score = 0
 
 var amount_photos = 5
 var min_to_end = 5
@@ -36,6 +37,8 @@ func _ready():
 func _process(delta):
 	battery_status = battery_time.time_left / seconds_for_timer
 	camera_ui.battery_status = battery_status
+	if battery_time.time_left == 0:
+		pass
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode==Input.MOUSE_MODE_CAPTURED:
@@ -110,8 +113,10 @@ func take_photo():
 		var tornado_position = get_tree().current_scene.get_node("Tornado").global_position
 		var photo: Photo = Photo.new(position, battery_time.time_left, img, tornado_position)
 		photos.append(photo)
+		photo_score = photo.score(photos)
 		
 		camera_ui.storage_capacity = photos.size()
+		camera_ui.score = photo_score
 		print("photo has been taken")
 	else:
 		print("no photo left")
