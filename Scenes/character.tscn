@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/character_new.gd" id="1_7egtf"]
 [ext_resource type="PackedScene" uid="uid://cgpr7mn86sb5j" path="res://Player/mainChar.tscn" id="2_6h3gn"]
-[ext_resource type="PackedScene" path="res://Scenes/camera_ui.tscn" id="2_ls814"]
+[ext_resource type="PackedScene" uid="uid://cllb7qehm7ufm" path="res://Scenes/camera_ui.tscn" id="2_ls814"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8wiiv"]
 
@@ -57,7 +57,7 @@ current = true
 [node name="SelfieCam" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.27362, -2.27145)
 
-[node name="CameraUI" parent="SelfieCam" instance=ExtResource("2_ls814")]
+[node name="CameraUI" parent="." instance=ExtResource("2_ls814")]
 
 [editable path="Node3D"]
 [editable path="Node3D/characterMedium"]

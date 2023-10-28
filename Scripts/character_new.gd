@@ -11,7 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var normal_cam = $Camera3D
 @onready var selfie_cam = $SelfieCam
 @onready var current_cam = $Camera3D
-@onready var camera_ui = $SelfieCam/CameraUI
+@onready var camera_ui = $CameraUI
 @onready var animIdle = get_node("Node3D/AnimationPlayerIdle")
 @onready var animRun = get_node("Node3D/AnimationPlayerRun")
 
@@ -34,7 +34,6 @@ func _ready():
 	battery_time.start()
 
 func _process(delta):
-	camera_ui.visible = is_selfie_active
 	battery_status = battery_time.time_left / seconds_for_timer
 	camera_ui.battery_status = battery_status
 
@@ -107,7 +106,7 @@ func switch_camera():
 		is_selfie_active = true
 
 func take_photo():
-	if photos.size() + 1 < amount_photos:
+	if photos.size() < amount_photos:
 		var viewport: Viewport = get_viewport()
 		var tex: Texture = viewport.get_texture()
 		var img: Image = tex.get_image()
