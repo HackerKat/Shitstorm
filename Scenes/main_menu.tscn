@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlikur42ll4y0"]
+[gd_scene load_steps=3 format=3 uid="uid://ki3frs3ufn2e"]
 
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_opxw6"]
+[ext_resource type="AudioStream" uid="uid://ngcf57fj7osg" path="res://Audio/shitstorm-theme.wav" id="2_d2iiv"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -34,6 +35,10 @@ offset_top = 272.0
 offset_right = 818.0
 offset_bottom = 372.0
 text = "CREDITS"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_d2iiv")
+autoplay = true
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
