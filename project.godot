@@ -9,11 +9,9 @@
 config_version=5
 
 [application]
-
-config/name="Basic3dStarter"
-run/main_scene="res://Scenes/main.tscn"
+config/name="ShitStorm"
+run/main_scene="res://Scenes/world.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
 
 [dotnet]
 
