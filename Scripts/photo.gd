@@ -24,11 +24,11 @@ func efficiency_graph(value, mult):
 	return 1 - (1 - (value / mult) ** 2) ** 2
 
 # Constructor to initialize the Photo object with provided angle, position, and picture
-func _init(position,timestamp, picture):
+func _init(position,timestamp, picture, tornado_position):
 	self.position = position
 	self.picture = picture
 	self.timestamp = timestamp
-	self.tornado_position = get_node("Tornado").global_position
+	self.tornado_position = tornado_position #get_node("Tornado").global_position
 
 
 func score(photos):
