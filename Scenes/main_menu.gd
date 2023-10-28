@@ -25,5 +25,6 @@ func _on_credits_button_pressed():
 
 
 func _on_continue_button_pressed():
+	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
 	mainmenu.hide()
