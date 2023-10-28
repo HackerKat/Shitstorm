@@ -25,5 +25,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="SelfieCam" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, -1.65802)
+current = true
 
 [node name="CameraUI" parent="SelfieCam" instance=ExtResource("2_ls814")]
