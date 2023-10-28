@@ -73,7 +73,6 @@ expand_mode = 1
 
 [node name="Border" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -3.0
-offset_right = 1149.0
+offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("3_qpd7j")
