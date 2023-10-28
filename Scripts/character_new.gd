@@ -129,6 +129,13 @@ func take_photo():
 		print("photo has been taken")
 	else:
 		print("no photo left")
+		endGame(false)
 
 func setSpeed(newSpeed):
 	SPEED = newSpeed
+
+func endGame(byDeath):
+	if byDeath:
+		pass
+	else:
+		pass

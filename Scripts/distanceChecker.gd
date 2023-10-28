@@ -10,7 +10,7 @@ var originalSpeed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	originalSpeed = player.get("SPEED")
+	originalSpeed = player.SPEED
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
