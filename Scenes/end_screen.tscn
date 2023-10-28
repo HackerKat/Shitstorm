@@ -1,7 +1,79 @@
-[gd_scene format=3 uid="uid://gmeqa5r75qmm"]
+[gd_scene load_steps=4 format=3 uid="uid://gmeqa5r75qmm"]
+
+[ext_resource type="Script" path="res://Scenes/end_screen.gd" id="1_8hoff"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w6l8x"]
+font_size = 55
+
+[sub_resource type="LabelSettings" id="LabelSettings_i5ots"]
+font_size = 39
 
 [node name="EndScreen" type="Node3D"]
+script = ExtResource("1_8hoff")
 
-[node name="Label" type="Label" parent="."]
+[node name="DeathUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 40.0
+
+[node name="RetryButton" type="Button" parent="DeathUI"]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 286.0
+offset_right = 717.0
+offset_bottom = 367.0
+text = "RETRY"
+
+[node name="GameOver" type="Label" parent="DeathUI"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 121.0
+offset_right = 960.0
+offset_bottom = 281.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_w6l8x")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="WinUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Retry" type="Button" parent="WinUI"]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 544.0
+offset_right = 1124.0
+offset_bottom = 625.0
+text = "RETRY"
+
+[node name="Congratultions" type="Label" parent="WinUI"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 40.0
+offset_right = 956.0
+offset_bottom = 200.0
+text = "congratulations"
+label_settings = SubResource("LabelSettings_w6l8x")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Score" type="Label" parent="WinUI"]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 176.0
+offset_right = 964.0
+offset_bottom = 336.0
+text = "Your score: "
+label_settings = SubResource("LabelSettings_i5ots")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="pressed" from="WinUI/Retry" to="." method="_on_retry_pressed"]
