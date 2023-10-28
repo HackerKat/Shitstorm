@@ -104,12 +104,8 @@ func take_photo():
 		var tex: Texture = viewport.get_texture()
 		var img: Image = tex.get_image()
 		img.flip_y()
-		photos.append(
-				{
-					"pos": position,
-					"image": img
-				}
-			)
-		print(position)
+		var photo: Photo = Photo.new(position, battery_time.time_left, img)
+		photos.append(photo)
+		print("photo has been taken")
 	else:
 		print("no photo left")
