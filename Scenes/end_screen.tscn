@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://gmeqa5r75qmm"]
+[gd_scene load_steps=12 format=3 uid="uid://gmeqa5r75qmm"]
 
 [ext_resource type="Script" path="res://Scenes/end_screen.gd" id="1_8hoff"]
 
@@ -7,6 +7,26 @@ font_size = 55
 
 [sub_resource type="LabelSettings" id="LabelSettings_i5ots"]
 font_size = 39
+
+[sub_resource type="Gradient" id="Gradient_2f4x0"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nyv2y"]
+gradient = SubResource("Gradient_2f4x0")
+
+[sub_resource type="Gradient" id="Gradient_oy4j6"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j2j3k"]
+gradient = SubResource("Gradient_oy4j6")
+
+[sub_resource type="Gradient" id="Gradient_bp0bi"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sqnh8"]
+gradient = SubResource("Gradient_bp0bi")
+
+[sub_resource type="Gradient" id="Gradient_270kp"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7t0yc"]
+gradient = SubResource("Gradient_270kp")
 
 [node name="EndScreen" type="Node3D"]
 script = ExtResource("1_8hoff")
@@ -75,5 +95,50 @@ label_settings = SubResource("LabelSettings_i5ots")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="Photo1" type="TextureRect" parent="WinUI"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 304.0
+offset_right = 232.0
+offset_bottom = 488.0
+texture = SubResource("GradientTexture2D_nyv2y")
+expand_mode = 4
+
+[node name="Photo2" type="TextureRect" parent="WinUI"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 304.0
+offset_right = 440.0
+offset_bottom = 488.0
+texture = SubResource("GradientTexture2D_j2j3k")
+expand_mode = 4
+
+[node name="Photo3" type="TextureRect" parent="WinUI"]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 304.0
+offset_right = 656.0
+offset_bottom = 488.0
+texture = SubResource("GradientTexture2D_j2j3k")
+expand_mode = 4
+
+[node name="Photo4" type="TextureRect" parent="WinUI"]
+layout_mode = 0
+offset_left = 680.0
+offset_top = 304.0
+offset_right = 864.0
+offset_bottom = 488.0
+texture = SubResource("GradientTexture2D_sqnh8")
+expand_mode = 4
+
+[node name="Photo5" type="TextureRect" parent="WinUI"]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 304.0
+offset_right = 1080.0
+offset_bottom = 488.0
+texture = SubResource("GradientTexture2D_7t0yc")
+expand_mode = 4
 
 [connection signal="pressed" from="WinUI/Retry" to="." method="_on_retry_pressed"]

@@ -128,7 +128,7 @@ func take_photo():
 		var viewport: Viewport = get_viewport()
 		var tex: Texture = viewport.get_texture()
 		var img: Image = tex.get_image()
-		img.flip_y()
+		
 		var tornado_position = $"../Node3D/Tornado".global_position
 		var photo: Photo = Photo.new(position, battery_time.time_left, img, tornado_position)
 		photos.append(photo)
@@ -153,8 +153,6 @@ func setSpeed(newSpeed):
 
 func endGame(byDeath):
 	GlobalData.is_dead = byDeath
+	get_tree().change_scene_to_file("res://Scenes/end_screen.tscn")
 	get_tree().paused = true
-	if byDeath:
-		pass
-	else:
-		pass
+	
