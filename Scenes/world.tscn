@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/distanceChecker.gd" id="2_vneaq"]
 [ext_resource type="ArrayMesh" uid="uid://coheahqppqoby" path="res://models/Tornado/abstract_object.obj" id="3_e3pi7"]
 [ext_resource type="Script" path="res://Scripts/tornado.gd" id="3_gu0ge"]
-[ext_resource type="Terrain3DStorage" uid="uid://lalq1xnmbjdl" path="res://demo/data/terrain_storage.res" id="5_3t3dv"]
+[ext_resource type="Terrain3DStorage" uid="uid://dv2a00lqr54pv" path="res://demo/data/terrain_storage.res" id="5_3t3dv"]
 [ext_resource type="Texture2D" path="res://demo/textures/ground037_alb_ht.dds" id="6_l0fs4"]
 [ext_resource type="Texture2D" path="res://demo/textures/ground037_nrm_rgh.dds" id="7_qkexv"]
 [ext_resource type="Texture2D" path="res://demo/textures/rock028_alb_ht.dds" id="8_e65hr"]
