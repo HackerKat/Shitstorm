@@ -43,7 +43,7 @@ albedo_color = Color(0.380392, 0.380392, 0.380392, 1)
 [node name="World" type="Node3D"]
 
 [node name="character" parent="." instance=ExtResource("2_7bd7c")]
-transform = Transform3D(-1, 2.98023e-08, -8.74228e-08, 2.98023e-08, 1, 0, 8.74228e-08, 0, -1, 580.564, 1, 146.699)
+transform = Transform3D(-1, 2.98023e-08, -8.74228e-08, 2.98023e-08, 1, 0, 8.74228e-08, 0, -1, 607.628, 1, 146.699)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g3bud")
@@ -108,7 +108,7 @@ transform = Transform3D(28.0919, -6.23694, -8.48222, 1.10469, 5.86136, -0.651248
 transform = Transform3D(27.3975, -3.87573, 11.5912, 1.10469, 5.86136, -0.651248, -10.9027, 5.10789, 27.478, 167.836, -9.47043, -13.7539)
 
 [node name="Node3D2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.13, 9.433, 31.488)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 9.433, 71.618)
 
 [node name="Tornado" type="RigidBody3D" parent="Node3D2"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 562.284, -11.5067, 140.182)
@@ -138,7 +138,7 @@ transform = Transform3D(27.3975, -3.87573, 11.5912, 1.10469, 5.86136, -0.651248,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.13, 9.433, -91.9288)
 
 [node name="Tornado" type="RigidBody3D" parent="Node3D3"]
-transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 562.284, -11.5067, 140.182)
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 562.328, -11.5067, 139.598)
 collision_layer = 4
 collision_mask = 7
 mass = 0.1
