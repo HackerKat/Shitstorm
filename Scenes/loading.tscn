@@ -12,6 +12,7 @@ offset_bottom = 40.0
 script = ExtResource("1_htyt8")
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 0
 offset_left = 47.0
 offset_top = 519.0
 offset_right = 1106.0
