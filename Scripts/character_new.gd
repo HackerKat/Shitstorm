@@ -25,6 +25,9 @@ var battery_status = 1
 var seconds_for_timer = min_to_end * 60
 var photos: Array = []
 
+var ShutterSound = preload("res://Audio/camera-shutter-2.wav")
+#@onready var AudioPlayer = get_node("AudioStreamPlayer3D/AudioStreamPlayer3D")
+
 func _ready():
 	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
 	# Start timer for battery
@@ -119,6 +122,10 @@ func take_photo():
 		photos.append(photo)
 		photo_score = photo.score(photos)
 		
+		if !$"../AudioStreamPlayer3D".is_playing():
+			$"../AudioStreamPlayer3D".stream = ShutterSound
+			$"../AudioStreamPlayer3D".play()
+
 		camera_ui.storage_capacity = photos.size()
 		camera_ui.score = photo_score
 		print("photo has been taken")

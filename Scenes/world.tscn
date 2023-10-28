@@ -92,3 +92,5 @@ storage = ExtResource("5_3t3dv")
 texture_list = SubResource("Terrain3DTextureList_6biym")
 collision_layer = 7
 collision_mask = 3
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
