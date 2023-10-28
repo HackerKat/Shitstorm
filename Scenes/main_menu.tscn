@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ki3frs3ufn2e"]
 
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_opxw6"]
-[ext_resource type="AudioStream" uid="uid://ngcf57fj7osg" path="res://Audio/shitstorm-theme.wav" id="2_d2iiv"]
+[ext_resource type="AudioStream" uid="uid://yw3fkohm8frt" path="res://Audio/shitstorm-theme.wav" id="2_d2iiv"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
