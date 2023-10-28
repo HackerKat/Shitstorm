@@ -149,6 +149,7 @@ func setSpeed(newSpeed):
 	SPEED = newSpeed
 
 func endGame(byDeath):
+	get_tree().paused = true
 	if byDeath:
 		pass
 	else:
