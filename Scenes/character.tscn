@@ -12,17 +12,50 @@ collision_mask = 3
 script = ExtResource("1_7egtf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CapsuleShape3D_8wiiv")
 
 [node name="Node3D" parent="." instance=ExtResource("2_6h3gn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Node3D/characterMedium/RootNode/Root" index="0"]
+bones/0/rotation = Quaternion(-0.5, -0.5, 0.5, 0.5)
+bones/9/position = Vector3(-0.0020752, 0.0014881, 0.00193205)
+bones/9/rotation = Quaternion(-0.5, -0.5, 0.5, 0.5)
+bones/18/position = Vector3(-2.23409e-06, -0.000312403, 0.0156417)
+bones/19/rotation = Quaternion(9.30144e-05, -2.66484e-07, 0.999999, 0.00144317)
+bones/20/rotation = Quaternion(-0.0610426, -1.05458e-08, -1.03922e-08, 0.998135)
+bones/21/rotation = Quaternion(0.0118946, 9.99934e-09, 1.10409e-08, 0.999929)
+bones/22/rotation = Quaternion(0.0491658, -3.82796e-13, -1.89567e-14, 0.998791)
+bones/24/rotation = Quaternion(-0.0741353, -2.52698e-14, -8.82001e-15, 0.997248)
+bones/26/rotation = Quaternion(0.586882, 0.410654, 0.548294, -0.431632)
+bones/27/rotation = Quaternion(0.08389, 0.710813, 0.0613106, 0.695664)
+bones/28/rotation = Quaternion(0.0467615, 0.0125733, 0.00544629, 0.998812)
+bones/29/rotation = Quaternion(-0.0150854, 0.724359, -0.03158, 0.688534)
+bones/31/rotation = Quaternion(0.106369, 0.0667639, -0.000835429, 0.992082)
+bones/32/rotation = Quaternion(0.0309716, -0.0305242, 0.000892156, 0.999054)
+bones/34/rotation = Quaternion(-0.342678, 0.638637, 0.435215, 0.534137)
+bones/35/rotation = Quaternion(0.203993, -0.00949771, -0.0152595, 0.978807)
+bones/37/rotation = Quaternion(0.658379, -0.507611, 0.459993, 0.311887)
+bones/38/rotation = Quaternion(-0.000936326, 0.964876, -0.103902, -0.241282)
+bones/39/rotation = Quaternion(0.00583739, -0.113133, 0.0467143, 0.992464)
+bones/42/rotation = Quaternion(-0.106368, 0.066763, 0.00083558, 0.992083)
+bones/43/rotation = Quaternion(-0.0309738, -0.030523, -0.000892191, 0.999054)
+bones/45/rotation = Quaternion(-0.364375, 0.736523, -0.417217, -0.388193)
+bones/46/rotation = Quaternion(-0.199283, -0.0296377, 0.0461739, 0.978405)
+bones/48/rotation = Quaternion(0.986703, 0.00106098, 0.162528, 0.000669889)
+bones/49/rotation = Quaternion(0.141574, 0.0324445, 0.0528543, 0.987983)
+bones/50/rotation = Quaternion(-0.543806, -0.194181, -0.187544, 0.794604)
+bones/53/rotation = Quaternion(0.976588, -0.00135879, -0.215115, 0.000484288)
+bones/54/rotation = Quaternion(0.138948, 0.0115101, -0.0591732, 0.988463)
+bones/55/rotation = Quaternion(-0.548495, 0.228829, 0.171821, 0.785664)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27362, -0.613435)
 current = true
 
 [node name="SelfieCam" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, -1.65802)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.27362, -2.27145)
 
 [node name="CameraUI" parent="." instance=ExtResource("2_ls814")]
 

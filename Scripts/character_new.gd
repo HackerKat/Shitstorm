@@ -76,9 +76,13 @@ func _physics_process(delta):
 	direction *= SPEED
 	velocity.x = move_toward(velocity.x,direction.x, HORIZONTAL_ACCELERATION * delta)
 	velocity.z = move_toward(velocity.z,direction.z, HORIZONTAL_ACCELERATION * delta)
-	animRun.play("Root|Run")
 	
-	if velocity.x == 0 && velocity.z == 0: animIdle.play("Root|Idle")
+	if input_dir == Vector3.ZERO: 
+		animIdle.play("Root|Idle")
+		animRun.stop()
+	else: 
+		animRun.play("Root|Run")
+		animIdle.stop()
 	var angle=5
 	#rotation_degrees=Vector3(input_dir.normalized().y*angle,rotation_degrees.y,-input_dir.normalized().x*angle)
 	var t = delta * 6
