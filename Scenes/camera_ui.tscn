@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://cllb7qehm7ufm"]
+
+[ext_resource type="Texture2D" uid="uid://7ej8x8isxgqp" path="res://UI/empty-battery.png" id="1_xkcmn"]
+[ext_resource type="Texture2D" uid="uid://dhh7bisb0t541" path="res://UI/hard-drive.png" id="2_5kpen"]
+[ext_resource type="Texture2D" uid="uid://d3q6qxeao5evv" path="res://UI/Border.png" id="3_qpd7j"]
+
+[sub_resource type="Gradient" id="Gradient_m5rfq"]
+offsets = PackedFloat32Array(0, 0.475524, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 0.290196, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xuylu"]
+gradient = SubResource("Gradient_m5rfq")
+width = 400
+height = 200
+
+[sub_resource type="LabelSettings" id="LabelSettings_vytpl"]
+font_size = 70
+font_color = Color(0, 0, 0, 1)
+
+[node name="CameraUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Battery" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 544.0
+offset_bottom = 544.0
+scale = Vector2(0.3, 0.3)
+step = 20.0
+value = 20.0
+texture_under = ExtResource("1_xkcmn")
+texture_progress = SubResource("GradientTexture2D_xuylu")
+texture_progress_offset = Vector2(45, 155)
+
+[node name="Storage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 504.0
+offset_right = 1120.0
+offset_bottom = 616.0
+texture = ExtResource("2_5kpen")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Storage"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -65.0
+offset_right = 107.0
+offset_bottom = 48.0
+text = "10"
+label_settings = SubResource("LabelSettings_vytpl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Border" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_qpd7j")
