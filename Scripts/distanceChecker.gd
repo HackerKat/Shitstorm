@@ -1,7 +1,7 @@
 extends Node
 
-@onready var player = get_node("Demo/Player")
-@onready var tornado = get_node("Demo/Tornado")
+@onready var player = %Player
+@onready var tornado = $"../Tornado"
 
 
 # Called when the node enters the scene tree for the first time.
