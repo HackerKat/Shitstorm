@@ -3,7 +3,8 @@ var gameOver = false
 @onready var deathUi = $DeathUI
 @onready var winUi = $WinUI
 @onready var scoreUi = $WinUI/Score
-var score = 0
+@onready var scoreText = scoreUi.text
+var score = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,7 +14,7 @@ func _ready():
 		winUi.show()
 		
 func _set_score():
-	scoreUi.text += str(score)
+	scoreUi.text = scoreUi + str(score)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

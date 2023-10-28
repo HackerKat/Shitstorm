@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/end_screen.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalData="*res://Scripts/global_data.gd"
+
 [dotnet]
 
 project/assembly_name="Basic3dStarter"

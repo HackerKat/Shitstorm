@@ -6,6 +6,8 @@ var score = 0
 @onready var battery = $Battery
 @onready var storageLabel = $Storage/Label
 @onready var reachedTexture = $Storage/MaxReachedTexture
+@onready var scoreUi = $ScoreUi
+@onready var scoreText = scoreUi.text
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -22,3 +24,4 @@ func _process(delta):
 			reachedTexture.visible = true
 	else:
 		storageLabel.text = "0"
+	scoreUi.text = scoreText + str(int(score))
