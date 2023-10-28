@@ -1,11 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://doh0w0if3r85g"]
 
 [ext_resource type="Script" path="res://Scripts/character_new.gd" id="1_7egtf"]
-[ext_resource type="PackedScene" uid="uid://cllb7qehm7ufm" path="res://Scenes/camera_ui.tscn" id="2_ls814"]
+[ext_resource type="PackedScene" uid="uid://cgpr7mn86sb5j" path="res://Player/mainChar.tscn" id="2_6h3gn"]
+[ext_resource type="PackedScene" path="res://Scenes/camera_ui.tscn" id="2_ls814"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8wiiv"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_3y4jd"]
 
 [node name="character" type="CharacterBody3D"]
 collision_layer = 2
@@ -13,18 +12,19 @@ collision_mask = 3
 script = ExtResource("1_7egtf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CapsuleShape3D_8wiiv")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_3y4jd")
+[node name="Node3D" parent="." instance=ExtResource("2_6h3gn")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+current = true
 
 [node name="SelfieCam" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, -1.65802)
-current = true
 
-[node name="CameraUI" parent="." instance=ExtResource("2_ls814")]
+[node name="CameraUI" parent="SelfieCam" instance=ExtResource("2_ls814")]
+
+[editable path="Node3D"]
+[editable path="Node3D/characterMedium"]

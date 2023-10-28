@@ -11,7 +11,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var normal_cam = $Camera3D
 @onready var selfie_cam = $SelfieCam
 @onready var current_cam = $Camera3D
-@onready var camera_ui = $CameraUI
+@onready var camera_ui = $SelfieCam/CameraUI
+@onready var animIdle = get_node("Node3D/AnimationPlayerIdle")
+@onready var animRun = get_node("Node3D/AnimationPlayerRun")
 
 var is_selfie_active = false
 var battery_time = Timer.new()
@@ -32,6 +34,7 @@ func _ready():
 	battery_time.start()
 
 func _process(delta):
+	camera_ui.visible = is_selfie_active
 	battery_status = battery_time.time_left / seconds_for_timer
 	camera_ui.battery_status = battery_status
 
@@ -74,7 +77,9 @@ func _physics_process(delta):
 	direction *= SPEED
 	velocity.x = move_toward(velocity.x,direction.x, HORIZONTAL_ACCELERATION * delta)
 	velocity.z = move_toward(velocity.z,direction.z, HORIZONTAL_ACCELERATION * delta)
-
+	animRun.play("Root|Run")
+	
+	if velocity.x == 0 && velocity.z == 0: animIdle.play("Root|Idle")
 	var angle=5
 	#rotation_degrees=Vector3(input_dir.normalized().y*angle,rotation_degrees.y,-input_dir.normalized().x*angle)
 	var t = delta * 6
