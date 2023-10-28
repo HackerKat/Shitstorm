@@ -102,7 +102,7 @@ func switch_camera():
 		is_selfie_active = true
 
 func take_photo():
-	if photos.size() + 1 < amount_photos:
+	if photos.size() < amount_photos:
 		var viewport: Viewport = get_viewport()
 		var tex: Texture = viewport.get_texture()
 		var img: Image = tex.get_image()
