@@ -15,7 +15,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var is_selfie_active = false
 var battery_time = Timer.new()
-var tornado_position = null
 
 var amount_photos = 5
 var min_to_end = 5
@@ -105,6 +104,7 @@ func take_photo():
 		var tex: Texture = viewport.get_texture()
 		var img: Image = tex.get_image()
 		img.flip_y()
+		var tornado_position = get_tree().current_scene.get_node("Tornado").global_position
 		var photo: Photo = Photo.new(position, battery_time.time_left, img, tornado_position)
 		photos.append(photo)
 		
