@@ -140,6 +140,9 @@ func take_photo():
 
 		camera_ui.storage_capacity = photos.size()
 		camera_ui.score = photo_score
+		GlobalData.score = photo_score
+		GlobalData.photos = photos
+		
 		print("photo has been taken")
 	else:
 		print("no photo left")
@@ -149,6 +152,7 @@ func setSpeed(newSpeed):
 	SPEED = newSpeed
 
 func endGame(byDeath):
+	GlobalData.is_dead = byDeath
 	if byDeath:
 		pass
 	else:
