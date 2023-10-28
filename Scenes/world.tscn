@@ -107,6 +107,60 @@ transform = Transform3D(28.0919, -6.23694, -8.48222, 1.10469, 5.86136, -0.651248
 [node name="vaca2" parent="Node3D/TornadoOBJ" instance=ExtResource("10_q32rh")]
 transform = Transform3D(27.3975, -3.87573, 11.5912, 1.10469, 5.86136, -0.651248, -10.9027, 5.10789, 27.478, 167.836, -9.47043, -13.7539)
 
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.13, 9.433, 31.488)
+
+[node name="Tornado" type="RigidBody3D" parent="Node3D2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 562.284, -11.5067, 140.182)
+collision_layer = 4
+collision_mask = 7
+mass = 0.1
+can_sleep = false
+linear_damp_mode = 1
+script = ExtResource("3_gu0ge")
+
+[node name="TornadoCollisionShape" type="CollisionShape3D" parent="Node3D2/Tornado"]
+shape = SubResource("SphereShape3D_8i2tp")
+
+[node name="TornadoOBJ" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(-0.00999999, 0, 0, 0, 0.05, 0, 0, 0, -0.01, 562.284, -8.19462, 140.182)
+material_override = SubResource("StandardMaterial3D_oa41i")
+mesh = ExtResource("3_e3pi7")
+skeleton = NodePath("../..")
+
+[node name="vaca" parent="Node3D2/TornadoOBJ" instance=ExtResource("10_q32rh")]
+transform = Transform3D(28.0919, -6.23694, -8.48222, 1.10469, 5.86136, -0.651248, 8.96318, 1.48742, 28.5911, -134.117, 67.6809, 0)
+
+[node name="vaca2" parent="Node3D2/TornadoOBJ" instance=ExtResource("10_q32rh")]
+transform = Transform3D(27.3975, -3.87573, 11.5912, 1.10469, 5.86136, -0.651248, -10.9027, 5.10789, 27.478, 167.836, -9.47043, -13.7539)
+
+[node name="Node3D3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.13, 9.433, -91.9288)
+
+[node name="Tornado" type="RigidBody3D" parent="Node3D3"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 562.284, -11.5067, 140.182)
+collision_layer = 4
+collision_mask = 7
+mass = 0.1
+can_sleep = false
+linear_damp_mode = 1
+script = ExtResource("3_gu0ge")
+
+[node name="TornadoCollisionShape" type="CollisionShape3D" parent="Node3D3/Tornado"]
+shape = SubResource("SphereShape3D_8i2tp")
+
+[node name="TornadoOBJ" type="MeshInstance3D" parent="Node3D3"]
+transform = Transform3D(-0.00999999, 0, 0, 0, 0.05, 0, 0, 0, -0.01, 562.284, -8.19462, 140.182)
+material_override = SubResource("StandardMaterial3D_oa41i")
+mesh = ExtResource("3_e3pi7")
+skeleton = NodePath("../..")
+
+[node name="vaca" parent="Node3D3/TornadoOBJ" instance=ExtResource("10_q32rh")]
+transform = Transform3D(28.0919, -6.23694, -8.48222, 1.10469, 5.86136, -0.651248, 8.96318, 1.48742, 28.5911, -134.117, 67.6809, 0)
+
+[node name="vaca2" parent="Node3D3/TornadoOBJ" instance=ExtResource("10_q32rh")]
+transform = Transform3D(27.3975, -3.87573, 11.5912, 1.10469, 5.86136, -0.651248, -10.9027, 5.10789, 27.478, 167.836, -9.47043, -13.7539)
+
 [editable path="character"]
 [editable path="character/Node3D"]
 [editable path="character/Node3D/characterMedium"]
