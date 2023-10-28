@@ -19,6 +19,7 @@ var amount_photos = 5
 var min_to_end = 5
 var battery_status = 1
 var seconds_for_timer = min_to_end * 60
+var photos: Array = []
 
 func _ready():
 	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
@@ -31,6 +32,7 @@ func _ready():
 
 func _process(delta):
 	battery_status = battery_time.time_left / seconds_for_timer
+	print(battery_status)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode==Input.MOUSE_MODE_CAPTURED:
@@ -47,7 +49,9 @@ func _unhandled_key_input(event):
 
 func _input(event):
 	if event.is_action_pressed("switch_camera"):
-		change_cam()
+		switch_camera()
+	elif event.is_action_pressed("take_photo"):
+		take_photo()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -79,7 +83,7 @@ func _physics_process(delta):
 	move_and_slide()
 	force_update_transform()
 
-func change_cam():
+func switch_camera():
 	if is_selfie_active:
 		# change current_cam to normal_cam
 		current_cam = normal_cam
@@ -91,3 +95,19 @@ func change_cam():
 		current_cam = selfie_cam
 		selfie_cam.current = true
 		is_selfie_active = true
+
+func take_photo():
+	if photos.size() + 1 < amount_photos:
+		var viewport: Viewport = get_viewport()
+		var tex: Texture = viewport.get_texture()
+		var img: Image = tex.get_image()
+		img.flip_y()
+		photos.append(
+				{
+					"pos": position,
+					"image": img
+				}
+			)
+		print(position)
+	else:
+		print("no photo left")
