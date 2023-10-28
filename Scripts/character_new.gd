@@ -106,6 +106,8 @@ func take_photo():
 		img.flip_y()
 		var photo: Photo = Photo.new(position, battery_time.time_left, img)
 		photos.append(photo)
+		
+		camera_ui.storage_capacity = photo.size()
 		print("photo has been taken")
 	else:
 		print("no photo left")

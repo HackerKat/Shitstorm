@@ -1,6 +1,6 @@
 extends Control
 var battery_status = 5
-var storage_capacity = 5
+var storage_capacity
 
 @onready var battery = $Battery
 @onready var storageLabel = $Storage/Label
@@ -13,3 +13,7 @@ func _ready():
 func _process(delta):
 	battery.value =  battery_status * 100
 	storageLabel.text = str(storage_capacity)
+	if storage_capacity:
+		storageLabel.text = str(storage_capacity)
+	else:
+		storageLabel.text = "0"
