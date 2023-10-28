@@ -49,22 +49,21 @@ func base_score():
 	return min(500, res * 10000)
 
 func comparison_score(other):
-	# used by score(..) to compare itself to other photos
 	var position_difference = (self.position - other.position).length()
 	
 	
 	var time_difference = abs(self.timestamp - other.timestamp)
 	
-	print("Δp: ", position_difference, " Δt ", time_difference)
+	#print("Δp: ", position_difference, " Δt ", time_difference)
 	
 	var position_efficiency = efficiency_graph(position_difference, PENALTY_POSITION_DIFFERENCE)
 	var time_efficiency = efficiency_graph(time_difference, PENALTY_TIME_DIFFERENCE)
 	
-	print("Ep: ",position_efficiency,  " Et: ", time_efficiency)
+	#print("Ep: ",position_efficiency,  " Et: ", time_efficiency)
 	
 	var res = position_efficiency * 0.8 + time_efficiency * 0.2 #* angle_efficiency
 	res *= 50
-	print("Score: ", res)
+	#print("Score: ", res)
 	
 	return res
 	
