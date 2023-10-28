@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var normal_cam = $Camera3D
 @onready var selfie_cam = $SelfieCam
 @onready var current_cam = $Camera3D
+@onready var camera_ui = $SelfieCam/CameraUI
 
 var is_selfie_active = false
 var battery_time = Timer.new()
@@ -31,8 +32,9 @@ func _ready():
 	battery_time.start()
 
 func _process(delta):
+	camera_ui.visible = is_selfie_active
 	battery_status = battery_time.time_left / seconds_for_timer
-	print(battery_status)
+	camera_ui.battery_status = battery_status
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode==Input.MOUSE_MODE_CAPTURED:
